@@ -1,9 +1,7 @@
 name : Terraform Validate/Plan/Apply
 run-name: Validate and apply Terraform infraestructure 🚀
 on:
-  push:
-    branches:
-      - main
+  pull_request:
     paths:
       - 'project/main.tf'
       - 'project/variables.tf'
