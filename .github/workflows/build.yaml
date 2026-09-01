@@ -1,6 +1,8 @@
 name : Build Flask API Tarefas
 run-name: Build Flask API Tarefas 🚀
 on: [push]
+permissions: 
+  contents: write #da permissão de escrever para o bot do github actions
 jobs:
   build:
     runs-on: ubuntu-latest
