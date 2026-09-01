@@ -1,6 +1,11 @@
 name : Build Flask API Tarefas
 run-name: Build Flask API Tarefas 🚀
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'app/**'
 permissions: 
   contents: write #da permissão de escrever para o bot do github actions
 jobs:
@@ -19,7 +24,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v7  #Action pronta do github que faz build e push da imagem do docker
         with:
-          context: ./app  # contexto do build do docker, nesse caso é a raiz do repositório
+          context: ./app  # contexto do build do docker
           push: true  # faz o push da imagem para o docker hub
           tags: samucovsk/tarefas-api:${{ github.sha }}  # tag da imagem do docker que vai ser publicada no docker hub
       - name: Update image tag in manifests/deployment.yml
