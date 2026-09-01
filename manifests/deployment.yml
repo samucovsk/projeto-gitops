@@ -18,5 +18,5 @@ spec:                                           # o estado desejado do deploymen
       containers:
         - name: flask-api-tarefas               # Nome do container
           image: samucovsk/tarefas-api:latest   # imagem do container publciada no docker hub
-          ports:                                # Portas que o container vai expor
+          ports:                                # Documenta a porta que o container escuta
             - containerPort: 5000

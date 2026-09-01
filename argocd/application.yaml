@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1                          # Versão da api do argocd
+kind: Application                                         # tipo de recurso application
+metadata:                                                 # metadata do recurso
+  name: flask-api-tarefas                                 # nome do application
+  namespace: argocd                                       # namespace do application
+spec:                                                     
+  project: default                                        # projeto do application
+  source:                                                 # de onde vem a fonte da verdade 
+    repoURL: https://github.com/samucovsk/projeto-gitops  # meu repositorio que le vai observar
+    targetRevision: HEAD                                  # qual branch ele vai olhar
+    path: manifests                                       # qual pasta dentro do repositorio 
+  destination:                                            # DESTINO ONDE ELE VAI DEPLOYAR
+    server: https://kubernetes.default.svc                # cluster local (esse é o valor fixo quando ele vai deploymar no cluster aonde ele ja está)
+    namespace: flask-api-tarefas                          # Em qual namespace ele vai criar os recursos
+  syncPolicy:                                             # politica de sync
+    automated:                                            # vai olhar automaticamente e aplicar
+      prune: true                                         # se você deletar um recurso do repo ele olha e automaticamente deleta do cluster
+      selfHeal: true                                      # se alguém muda alguma coisa manualmente no cluster ele volta para a config que está no repo que é a fonte da verdade
