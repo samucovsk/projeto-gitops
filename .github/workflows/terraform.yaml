@@ -1,0 +1,41 @@
+name : Terraform Validate/Plan/Apply
+run-name: Validate and apply Terraform infraestructure 🚀
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'project/main.tf'
+      - 'project/variables.tf'
+      - 'project/outputs.tf'
+permissions: 
+  contents: read
+jobs:
+    terraform_fmt_validate_plan:
+        runs-on: ubuntu-latest
+        
+        name: "terraform validate"
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v4
+              with:
+                  terraform_version: "1.15.3"
+            - name: Terraform fmt
+              run: terraform fmt -check
+              working-directory: project
+            
+            - name: Terraform Init
+              run: terraform init
+              working-directory: project
+
+            - name: Terraform validate
+              run: terraform validate
+              working-directory: project
+
+            - name: Terraform plan
+              run: terraform plan -out=tfplan
+              working-directory: project
+            
