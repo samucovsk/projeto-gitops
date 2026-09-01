@@ -62,14 +62,11 @@ Depois disso, o ArgoCD assume a sincronização da aplicação a partir da pasta
 ## Documentações usadas
 
 **Terraform**
-- [Terraform Language](https://developer.hashicorp.com/terraform/language)
 - [Provider tehcyx/kind](https://registry.terraform.io/providers/tehcyx/kind/latest/docs)
 - [Provider hashicorp/kubernetes](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs)
 - [Provider hashicorp/helm](https://registry.terraform.io/providers/hashicorp/helm/latest/docs)
 
-**Kubernetes / kind**
-- [kind — Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/)
-- [kubectl reference](https://kubernetes.io/docs/reference/kubectl/)
+**Kubernetes**
 - [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 - [Service](https://kubernetes.io/docs/concepts/services-networking/service/)
 
