@@ -1,0 +1,22 @@
+apiVersion: apps/v1                             # Versão da API do k8s para o recurso Deployment
+kind: Deployment                                #tipo de recurso do k8s 
+metadata:                                       # metadados do deployment
+  name: flask-api-tarefas                       # nome do deployment
+  labels:                                       # rótulos do deployment
+    app: flask-api-tarefas
+  namespace: flask-api-tarefas                  # namespace do deployment
+spec:                                           # o estado desejado do deployment
+  replicas: 3                                   # quantas réplicas do pod do deployment devem ter
+  selector:                                     # como eu acho os pods que pertecem a esse deployment
+    matchLabels:                                # os que tiverem essa label são desse deployment
+      app: flask-api-tarefas          
+  template:                                     # Template de todos os pods desse deployment
+    metadata:                                   
+      labels:
+        app: flask-api-tarefas                  # Label que o deployment ve pra pegar esse pod pra si 
+    spec:
+      containers:
+        - name: flask-api-tarefas               # Nome do container
+          image: samucovsk/tarefas-api:latest   # imagem do container publciada no docker hub
+          ports:                                # Portas que o container vai expor
+            - containerPort: 5000

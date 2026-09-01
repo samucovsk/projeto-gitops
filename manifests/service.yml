@@ -1,0 +1,12 @@
+apiVersion: v1                          # Versão da API do k8s para o recurso Service   
+kind: Service                           # tipo de recurso do k8s 
+metadata:                               # metadados do service
+  name: flask-api-tarefas               # nome do service que também vira o hostname interno que os pods usam para chamar a API flask se tiver outro serviço se comunicando com ela
+  namespace: flask-api-tarefas          # namespace do service
+spec:                                   
+  selector:                             # Seleciona quais as labels dos pods desse service que foram definidas no deployment
+    app: flask-api-tarefas              
+  ports:
+    - protocol: TCP                     
+      port: 80                          # Porta que o service vai expor
+      targetPort: 5000                  # Porta do container que o service vai redirecionar o tráfego

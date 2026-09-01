@@ -1,0 +1,7 @@
+SCOPE.md
+*-config
+kubeconfig*
+*.tfstate
+*.tfstate.*
+.terraform/
+crash.log
